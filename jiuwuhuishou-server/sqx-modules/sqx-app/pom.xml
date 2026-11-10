@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.sqx</groupId>
+        <artifactId>sqx-modules</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>sqx-app</artifactId>
+
+    <properties>
+        <!-- 与 docs/testing/jacoco-gate-includes.txt 同步；空门禁时保持 parent jacoco.check.skip=true -->
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-pay</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-doc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-mail</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-sms</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-file</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-shiro</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-websocket</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-common-mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sqx</groupId>
+            <artifactId>sqx-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp3.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-crypto</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>jacoco-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 业务层报告范围：见 docs/testing/coverage-include-exclude.md；须带 .class -->
+                            <includes>
+                                <include>**/service/impl/*ServiceImpl.class</include>
+                                <include>**/support/**</include>
+                                <include>**/express/sf/SfExpressOrderService.class</include>
+                                <include>**/express/sf/SfButlerClient.class</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/domain/**</exclude>
+                                <exclude>**/entity/**</exclude>
+                                <exclude>**/bo/**</exclude>
+                                <exclude>**/vo/**</exclude>
+                                <exclude>**/db/mapper/**</exclude>
+                                <exclude>**/db/service/impl/**</exclude>
+                                <exclude>**/controller/**</exclude>
+                                <!-- 不再排除 **/config/**：会误伤 recycle/config 业务 Service；Spring *Config 本就不在 include 内 -->
+                            </excludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>jacoco-check</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${jacoco.check.skip}</skip>
+                            <!-- 渐进门禁：仅检查 gate 内类；路径须带 .class；同步 docs/testing/jacoco-gate-includes.txt -->
+                            <includes>
+                                <include>com/sqx/app/order/support/RecycleOrderStateMachine.class</include>
+                                <include>com/sqx/app/order/service/impl/RecycleOrderServiceImpl.class</include>
+                                <include>com/sqx/app/order/service/impl/AppointmentOptionServiceImpl.class</include>
+                                <include>com/sqx/app/recycle/appliance/service/impl/ApplianceRecycleServiceImpl.class</include>
+                                <include>com/sqx/app/recycle/appliance/support/ApplianceEstimateRuleSupport.class</include>
+                                <include>com/sqx/app/recycle/appliance/support/ApplianceHeroFlowDefaults.class</include>
+                                <include>com/sqx/app/recycle/appliance/support/ApplianceSpecDefaults.class</include>
+                                <include>com/sqx/app/recycle/book/service/impl/BookRecycleServiceImpl.class</include>
+                                <include>com/sqx/app/recycle/book/support/BookEstimateDefaults.class</include>
+                                <include>com/sqx/app/recycle/book/support/BookCategoryDefaults.class</include>
+                                <include>com/sqx/app/recycle/clothes/service/impl/ClothesRecycleServiceImpl.class</include>
+                                <include>com/sqx/app/recycle/clothes/support/ClothesEstimateDefaults.class</include>
+                                <include>com/sqx/app/recycle/clothes/support/ClothesCategoryDefaults.class</include>
+                                <include>com/sqx/app/recycle/digital/service/impl/DigitalRecycleServiceImpl.class</include>
+                                <include>com/sqx/app/recycle/digital/support/DigitalSpecDefaults.class</include>
+                                <include>com/sqx/app/pickup/service/impl/PickupTaskAssignServiceImpl.class</include>
+                                <include>com/sqx/app/pickup/service/impl/PickupTaskServiceImpl.class</include>
+                                <include>com/sqx/app/settlement/service/impl/SettlementServiceImpl.class</include>
+                                <include>com/sqx/app/payout/service/impl/PayoutServiceImpl.class</include>
+                                <include>com/sqx/app/review/service/impl/ReviewServiceImpl.class</include>
+                                <include>com/sqx/app/wallet/wallet/service/impl/UserWalletServiceImpl.class</include>
+                                <include>com/sqx/app/wallet/transaction/service/impl/UserWalletTransactionServiceImpl.class</include>
+                                <include>com/sqx/app/referral/withdraw/service/impl/WithdrawRecordServiceImpl.class</include>
+                                <include>com/sqx/app/referral/withdraw/service/impl/WithdrawalAccountServiceImpl.class</include>
+                                <include>com/sqx/app/referral/commission/service/impl/ReferralCommissionServiceImpl.class</include>
+                                <include>com/sqx/app/referral/user/service/impl/ReferralUserCommissionServiceImpl.class</include>
+                                <include>com/sqx/app/welfare/service/impl/WelfareServiceImpl.class</include>
+                                <include>com/sqx/app/admin/ops/service/impl/AdminWelfareTaskManageServiceImpl.class</include>
+                                <include>com/sqx/app/vip/plan/service/impl/VipPlanServiceImpl.class</include>
+                                <include>com/sqx/app/vip/rights/service/impl/VipRightsServiceImpl.class</include>
+                                <include>com/sqx/app/base/banner/service/impl/BannerServiceImpl.class</include>
+                                <include>com/sqx/app/base/messages/service/impl/MessagesServiceImpl.class</include>
+                                <include>com/sqx/app/help/service/impl/HelpArticleServiceImpl.class</include>
+                                <include>com/sqx/app/admin/ops/service/impl/AdminHelpArticleManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/ops/service/impl/AdminHelpCategoryManageServiceImpl.class</include>
+                                <include>com/sqx/app/brand/service/impl/BrandCooperationServiceImpl.class</include>
+                                <include>com/sqx/app/admin/ops/service/impl/AdminBrandCooperationManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/ops/service/impl/AdminWelfareUserManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/recycle/appliance/service/impl/AdminApplianceManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/recycle/book/service/impl/AdminBookManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/recycle/clothes/service/impl/AdminClothesManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/recycle/digital/service/impl/AdminDigitalManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/recycle/appointment/service/impl/AdminAppointmentConfigServiceImpl.class</include>
+                                <include>com/sqx/app/admin/recycle/service/impl/AdminRecycleCategoryManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/recycle/service/impl/AdminRecycleRuleManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/recycle/service/impl/AdminServiceAreaManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/product/service/impl/AdminProductManageServiceImpl.class</include>
+                                <include>com/sqx/app/address/service/impl/UserAddressServiceImpl.class</include>
+                                <include>com/sqx/app/servicechat/service/impl/ServiceMessageServiceImpl.class</include>
+                                <include>com/sqx/app/servicechat/service/impl/ServiceChatConfigServiceImpl.class</include>
+                                <include>com/sqx/app/admin/servicechat/service/impl/AdminServiceChatManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/servicechat/service/impl/AdminServiceChatConfigServiceImpl.class</include>
+                                <include>com/sqx/app/express/sf/SfExpressOrderService.class</include>
+                                <include>com/sqx/app/express/sf/SfButlerClient.class</include>
+                                <include>com/sqx/app/admin/user/service/impl/AdminUserAddressManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/user/service/impl/AdminUserDetailServiceImpl.class</include>
+                                <include>com/sqx/app/admin/datacenter/service/impl/AdminDatacenterServiceImpl.class</include>
+                                <include>com/sqx/app/admin/order/service/impl/AdminOrderManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/order/service/impl/AdminOrderExceptionManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/order/service/impl/AdminOrderRescheduleManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/orderflow/service/impl/AdminDisputeManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/orderflow/service/impl/AdminPayoutManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/orderflow/service/impl/AdminReviewManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/orderflow/service/impl/AdminSettlementManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/pickup/service/impl/AdminPickupManageServiceImpl.class</include>
+                                <include>com/sqx/app/admin/support/AdminLookupSupport.class</include>
+                                <include>com/sqx/app/base/appConfig/service/impl/AppConfigServiceImpl.class</include>
+                                <include>com/sqx/app/base/auth/service/impl/AppAuthServiceImpl.class</include>
+                                <include>com/sqx/app/base/auth/support/AppAuthTokenSupport.class</include>
+                                <include>com/sqx/app/base/file/service/impl/FileServiceImpl.class</include>
+                                <include>com/sqx/app/base/map/service/impl/MapServiceImpl.class</include>
+                                <include>com/sqx/app/base/notification/core/service/impl/NotificationServiceImpl.class</include>
+                                <include>com/sqx/app/base/notification/service/impl/NotifyServiceImpl.class</include>
+                                <include>com/sqx/app/base/pay/business/service/impl/BusinessServiceImpl.class</include>
+                                <include>com/sqx/app/base/pay/business/service/impl/PayNotifyBusinessServiceImpl.class</include>
+                                <include>com/sqx/app/base/pay/business/service/impl/VipPayServiceImpl.class</include>
+                                <include>com/sqx/app/base/template/service/impl/SmsTemplateServiceImpl.class</include>
+                                <include>com/sqx/app/base/user/service/impl/UserServiceImpl.class</include>
+                                <include>com/sqx/app/base/verifyCode/service/impl/VerifyCodeServiceImpl.class</include>
+                                <include>com/sqx/app/product/support/ProductRecycleSupport.class</include>
+                                <include>com/sqx/app/recycle/config/service/impl/RecycleConfigServiceImpl.class</include>
+                            </includes>
+                            <rules>
+                                <rule>
+                                    <element>CLASS</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>1.00</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

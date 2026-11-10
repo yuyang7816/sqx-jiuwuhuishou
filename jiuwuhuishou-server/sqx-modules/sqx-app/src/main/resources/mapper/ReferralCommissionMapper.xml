@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sqx.app.referral.commission.db.mapper.ReferralCommissionMapper">
+
+    <select id="sumUserCommission" resultType="java.math.BigDecimal">
+        SELECT IFNULL(SUM(
+            CASE
+                WHEN direction = 1 THEN amount
+                WHEN direction = 2 THEN -amount
+                ELSE 0
+            END
+        ), 0)
+        FROM referral_commission
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="sumAmount" resultType="java.math.BigDecimal">
+        SELECT IFNULL(SUM(amount), 0)
+        FROM referral_commission
+        WHERE user_id = #{userId}
+          AND create_time <![CDATA[>=]]> #{startTime}
+          AND create_time <![CDATA[<]]> #{endTime}
+    </select>
+
+    <select id="referralList" resultType="com.sqx.app.referral.commission.domain.vo.ReferralListVo">
+        SELECT
+            rc.title AS userName,
+            '' AS avatar,
+            rc.amount AS amount
+        FROM referral_commission rc
+        WHERE rc.user_id = #{userId}
+        ORDER BY rc.create_time DESC
+    </select>
+
+    <select id="leaderboard" resultType="com.sqx.app.referral.commission.domain.vo.ReferralLeaderboardVo">
+        SELECT
+            u.user_id AS userId,
+            IFNULL(NULLIF(TRIM(u.user_name), ''), u.phone) AS userName,
+            IFNULL(u.avatar, '') AS avatar,
+            IFNULL(inv.invite_count, 0) AS inviteCount,
+            IFNULL(comm.amount, 0) AS amount
+        FROM tb_user u
+        LEFT JOIN (
+            SELECT
+                inviter.invitation_code,
+                COUNT(1) AS invite_count
+            FROM tb_user inviter
+            INNER JOIN tb_user invitee ON invitee.superior_invitation_code = inviter.invitation_code
+            WHERE inviter.invitation_code IS NOT NULL
+              AND inviter.invitation_code != ''
+            GROUP BY inviter.invitation_code
+        ) inv ON inv.invitation_code = u.invitation_code
+        LEFT JOIN (
+            SELECT
+                user_id,
+                SUM(
+                    CASE
+                        WHEN direction = 1 THEN amount
+                        WHEN direction = 2 THEN -amount
+                        ELSE 0
+                    END
+                ) AS amount
+            FROM referral_commission
+            GROUP BY user_id
+        ) comm ON comm.user_id = u.user_id
+        WHERE IFNULL(comm.amount, 0) > 0
+           OR IFNULL(inv.invite_count, 0) > 0
+        ORDER BY amount DESC, inviteCount DESC, u.user_id ASC
+        LIMIT #{limit}
+    </select>
+
+</mapper>

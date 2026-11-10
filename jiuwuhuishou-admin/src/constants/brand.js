@@ -1,0 +1,5 @@
+export const BRAND_NAME = '旧物回收'
+export const BRAND_ADMIN_TITLE = '旧物回收管理后台'
+export const BRAND_ADMIN_SUFFIX = '旧物回收管理台'
+export const BRAND_COMPANY = '西安省钱兄网络科技有限公司'
+export const BRAND_LOGO_TEXT = '旧'

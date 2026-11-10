@@ -1,0 +1,6 @@
+com\sqx\common\mail\service\impl\MailServiceImpl$1.class
+com\sqx\common\mail\config\MailAutoConfiguration.class
+com\sqx\common\mail\domain\MailAccount.class
+com\sqx\common\mail\service\IMailService.class
+com\sqx\common\mail\service\impl\MailServiceImpl.class
+com\sqx\common\mail\enums\MailError.class

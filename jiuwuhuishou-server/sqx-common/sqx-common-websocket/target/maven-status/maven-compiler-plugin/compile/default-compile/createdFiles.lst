@@ -1,0 +1,11 @@
+com\sqx\common\websocket\config\WebSocketAutoConfiguration.class
+com\sqx\common\websocket\interceptor\WebSocketInterceptor.class
+com\sqx\common\websocket\event\MessageEvent.class
+com\sqx\common\websocket\handler\WebSocketHandler.class
+com\sqx\common\websocket\enums\MessageTypeEnum.class
+com\sqx\common\websocket\constants\WebSocketConstants.class
+com\sqx\common\websocket\domain\MessageDto.class
+com\sqx\common\websocket\handler\ICustomMessageHandler.class
+com\sqx\common\websocket\holder\WebSocketSessionHolder.class
+com\sqx\common\websocket\utils\WebSocketUtils.class
+com\sqx\common\websocket\config\WebSocketConfig.class

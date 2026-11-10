@@ -1,0 +1,28 @@
+{
+  "groups": [
+    {
+      "name": "sqx.jwt",
+      "type": "com.sqx.common.shiro.utils.JwtUtil",
+      "sourceType": "com.sqx.common.shiro.utils.JwtUtil"
+    }
+  ],
+  "properties": [
+    {
+      "name": "sqx.jwt.expire",
+      "type": "java.lang.Long",
+      "sourceType": "com.sqx.common.shiro.utils.JwtUtil",
+      "defaultValue": 0
+    },
+    {
+      "name": "sqx.jwt.header",
+      "type": "java.lang.String",
+      "sourceType": "com.sqx.common.shiro.utils.JwtUtil"
+    },
+    {
+      "name": "sqx.jwt.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.sqx.common.shiro.utils.JwtUtil"
+    }
+  ],
+  "hints": []
+}

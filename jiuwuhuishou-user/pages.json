@@ -1,0 +1,368 @@
+/*
+	公司信息（仅注释，不展示、不影响运行）
+	产品官网：https://www.xiansqx.cn/
+	商业授权 / 体验全套：微信 maxdlln，备注【旅游】
+	微信同电话：13895585204
+	uni-app QQ 技术交流群：592576277
+	学习资料：公众号【码兄】回复【uniApp】
+	以上项目仅供学习使用、不可商用
+
+	更多产品：
+	- 省钱兄淘宝客 https://sqx.xiansqx.com/
+	- 省钱兄自营商城 http://games.xiansqx.com
+	- 省钱兄任务悬赏 http://rw.xiansqx.com
+	- 省钱兄同城跑腿 https://pt.xiansqx.com/
+	- 省钱兄同城外卖 https://wm.xiansqx.com/
+	- 省钱兄游戏陪玩 https://pw.xiansqx.com/
+	- 省钱兄抖客 https://dk.xiansqx.com/
+	- 省钱兄上门洗车 https://xc.xiansqx.com/
+
+	现成方案：多商户电商、蛋糕店点餐、单商户电商、O2O 核销、淘宝客、任务、分销会员、社区团购、拼多多/京东返利、支付、好差评、积分、校园跑腿、任务兼职、知识付费、外卖跑腿/点餐、短视频电商、众包接单、任务悬赏、跨境电商、电竞比赛、霸王餐、外卖红包、同城/校园外卖、陪玩、同城跑腿、社区兼职、家政、预约、月嫂、上门洗车、线上云酒馆、鲜花店预约、上门洗鞋、露营基地预约等。
+	承接小程序、微信公众号、APP、软著商标与官网开发。
+*/
+
+
+{
+	"easycom": {
+		"autoscan": true,
+		// 注意一定要放在custom里，否则无效，https://ask.dcloud.net.cn/question/131175
+		"custom": {
+			"^top-nav$": "@/components/ui/top-nav.vue",
+			"^floating-service$": "@/components/ui/floating-service.vue",
+			"^u--(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+			"^up-(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+			"^u-([^-].*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue"
+		}
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/welfare/welfare",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/order/order",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/webView/webView",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "packageRecycle",
+			"pages": [
+				{
+					"path": "common/service-check",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "appliance/home",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "appliance/rules",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "appliance/more",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "appliance/settlement",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "appliance/model-select",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "clothes/booking",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "digital/search",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "digital/models",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "digital/spec",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "digital/settlement",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
+			"root": "packageCommon",
+			"pages": [
+				{
+					"path": "order/detail",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "order/reschedule",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "order/exception",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "order/settlement-confirm",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "order/payout",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "order/review",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "order/success",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "pickup/list",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "pickup/detail",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/address",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/address-form",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/profile",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/balance-detail",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/coin-detail",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/withdraw",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/withdraw-records",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/notification",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/vip",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/settings",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/change-password",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/help-center",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/help-detail",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/login",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/register",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/forgot-password",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/brand-cooperation",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/agreement",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/invite",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/referral",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "user/referral-rules",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "service/chat",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "旧物回收",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff"
+	},
+	"tabBar": {
+		"color": "#5E4949",
+		"selectedColor": "#C8102E",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/image/tabbar/index_.png",
+			"selectedIconPath": "static/image/tabbar/index.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/welfare/welfare",
+			"iconPath": "static/image/tabbar/msg.png",
+			"selectedIconPath": "static/image/tabbar/msg_.png",
+			"text": "福利中心"
+		}, {
+			"pagePath": "pages/order/order",
+			"iconPath": "static/image/tabbar/shop.png",
+			"selectedIconPath": "static/image/tabbar/shop_.png",
+			"text": "订单"
+		}, {
+			"pagePath": "pages/my/my",
+			"iconPath": "static/image/tabbar/my.png",
+			"selectedIconPath": "static/image/tabbar/my_.png",
+			"text": "我的"
+		}]
+	},
+	"uniIdRouter": {}
+}

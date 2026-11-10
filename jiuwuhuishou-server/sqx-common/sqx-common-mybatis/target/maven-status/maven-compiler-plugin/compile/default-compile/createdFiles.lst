@@ -1,0 +1,9 @@
+com\sqx\common\mybatis\config\MybatisPlusConfig.class
+com\sqx\common\mybatis\utils\PageUtils.class
+com\sqx\common\mybatis\utils\PageUtil.class
+com\sqx\common\mybatis\config\CustomMetaObjectHandler.class
+com\sqx\common\mybatis\config\MybatisAutoConfiguration.class
+com\sqx\common\mybatis\domain\PageParam.class
+com\sqx\common\mybatis\constants\PageConstant.class
+com\sqx\common\mybatis\utils\Query.class
+com\sqx\common\mybatis\utils\SQLFilter.class

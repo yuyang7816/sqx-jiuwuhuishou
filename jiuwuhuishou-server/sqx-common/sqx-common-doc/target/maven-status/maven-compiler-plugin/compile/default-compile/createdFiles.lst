@@ -1,0 +1,4 @@
+com\sqx\common\doc\SpringDocConfig.class
+com\sqx\common\doc\DocAutoConfiguration.class
+com\sqx\common\doc\properties\SpringDocProperties.class
+META-INF\spring-configuration-metadata.json

@@ -1,0 +1,11 @@
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\enums\StorageTypeEnum.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\storage\AliOssFileStorage.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\storage\LocalFileStorage.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\storage\BTLocalFileStorage.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\config\FileAutoConfiguration.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\domain\UploadRes.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\utils\FileUtil.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\domain\UploadParam.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\enums\FileError.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\factory\FileStorageFactory.java
+E:\works\aaaaa-AI-zhengti\jiuwuhuishou-serverAI\server\sqx-common\sqx-common-file\src\main\java\com\sqx\common\file\storage\IFileStorage.java

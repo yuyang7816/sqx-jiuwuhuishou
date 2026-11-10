@@ -1,0 +1,11 @@
+com\sqx\common\file\factory\FileStorageFactory.class
+com\sqx\common\file\storage\AliOssFileStorage.class
+com\sqx\common\file\enums\FileError.class
+com\sqx\common\file\storage\LocalFileStorage.class
+com\sqx\common\file\storage\BTLocalFileStorage.class
+com\sqx\common\file\domain\UploadRes.class
+com\sqx\common\file\utils\FileUtil.class
+com\sqx\common\file\domain\UploadParam.class
+com\sqx\common\file\enums\StorageTypeEnum.class
+com\sqx\common\file\storage\IFileStorage.class
+com\sqx\common\file\config\FileAutoConfiguration.class
